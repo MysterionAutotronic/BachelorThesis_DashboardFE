@@ -5,6 +5,7 @@ import {
     ConfigSchema,
     type Config,
 } from '@mystiker123/config-schema';
+import styles from './ConfigForm.module.css';
 
 type ConfigDraft = Omit<Config, 'products'> & {
     products: string[];
@@ -73,114 +74,142 @@ export default function ConfigForm({ endpoint }: { endpoint: string }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
-            <label className='block font-medium'>Company Name</label>
-            <input
-                value={draft.companyName}
-                onChange={(e) => patch('companyName', e.target.value)}
-                placeholder="Company name"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>Proposition</label>
-            <input
-                value={draft.proposition}
-                onChange={(e) => patch('proposition', e.target.value)}
-                placeholder="Proposition"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>About</label>
-            <input
-                value={draft.about}
-                onChange={(e) => patch('about', e.target.value)}
-                placeholder="About"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>Country</label>
-            <input
-                value={draft.address?.country}
-                onChange={(e) => {
-                    patch('address', {
-                        ...draft.address,
-                        country: e.target.value
-                    })
-                }}
-                placeholder="Country"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>Zip Code</label>
-            <input
-                value={draft.address?.zipCode}
-                onChange={(e) => {
-                    patch('address', {
-                        ...draft.address,
-                        zipCode: e.target.value
-                    })
-                }}
-                placeholder="Zip Code"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>City</label>
-            <input
-                value={draft.address?.city}
-                onChange={(e) => {
-                    patch('address', {
-                        ...draft.address,
-                        city: e.target.value
-                    })
-                }}
-                placeholder="City"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>Street</label>
-            <input
-                value={draft.address?.street}
-                onChange={(e) => {
-                    patch('address', {
-                        ...draft.address,
-                        street: e.target.value
-                    })
-                }}
-                placeholder="Street"
-                className="w-full border p-2"
-            />
-            <label className='block font-medium'>Street Number</label>
-            <input
-                value={draft.address?.streetNumber}
-                onChange={(e) => {
-                    patch('address', {
-                        ...draft.address,
-                        streetNumber: e.target.value
-                    })
-                }}
-                placeholder="Street Number"
-                className="w-full border p-2"
-            />
-            <div className="space-y-2">
-                <label className="block font-medium">Products</label>
-
-                {draft.products.map((prod, i) => (
-                    <input
-                    key={i}
-                    value={prod}
-                    placeholder={`Product ${i + 1}`}
-                    onChange={e => updateProduct(i, e.target.value)}
-                    className="w-full border p-2"
-                    />
-                ))}
+        <form onSubmit={handleSubmit} className='space-y-6'>
+            <div className={styles.row}>
+                <label htmlFor='companyName' className={styles.label}>Company Name</label>
+                <input
+                    id='companyName'
+                    value={draft.companyName}
+                    onChange={(e) => patch('companyName', e.target.value)}
+                    placeholder='Company name'
+                    className={styles.input}
+                />
             </div>
-            <button
-                type="submit"
+            <div className={styles.row}>
+                <label htmlFor='proposition' className={styles.label}>Proposition</label>
+                <input
+                    id='proposition'
+                    value={draft.proposition}
+                    onChange={(e) => patch('proposition', e.target.value)}
+                    placeholder='Proposition'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label htmlFor='about' className={styles.label}>About</label>
+                <input
+                    id='about'
+                    value={draft.about}
+                    onChange={(e) => patch('about', e.target.value)}
+                    placeholder='About'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label id='country' className={styles.label}>Country</label>
+                <input
+                    id='country'
+                    value={draft.address?.country}
+                    onChange={(e) => {
+                        patch('address', {
+                            ...draft.address,
+                            country: e.target.value
+                        })
+                    }}
+                    placeholder='Country'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label htmlFor='zipCode' className={styles.label}>Zip Code</label>
+                <input
+                    id='zipCode'
+                    value={draft.address?.zipCode}
+                    onChange={(e) => {
+                        patch('address', {
+                            ...draft.address,
+                            zipCode: e.target.value
+                        })
+                    }}
+                    placeholder='Zip Code'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label htmlFor='city' className={styles.label}>City</label>
+                <input
+                    id='city'
+                    value={draft.address?.city}
+                    onChange={(e) => {
+                        patch('address', {
+                            ...draft.address,
+                            city: e.target.value
+                        })
+                    }}
+                    placeholder='City'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label htmlFor='street' className={styles.label}>Street</label>
+                <input
+                    id='street'
+                    value={draft.address?.street}
+                    onChange={(e) => {
+                        patch('address', {
+                            ...draft.address,
+                            street: e.target.value
+                        })
+                    }}
+                    placeholder='Street'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label htmlFor='streetNumber' className={styles.label}>Street Number</label>
+                <input
+                    id='streetNumber'
+                    value={draft.address?.streetNumber}
+                    onChange={(e) => {
+                        patch('address', {
+                            ...draft.address,
+                            streetNumber: e.target.value
+                        })
+                    }}
+                    placeholder='Street Number'
+                    className={styles.input}
+                />
+            </div>
+            <div className={styles.row}>
+                <label className={styles.label}>Products</label>
+                <div className={styles.productsRow}>
+
+                    {draft.products.map((prod, i) => (
+                        <input
+                        key={i}
+                        value={prod}
+                        placeholder={`Product ${i + 1}`}
+                        onChange={e => updateProduct(i, e.target.value)}
+                        className={styles.input}
+                        />
+                    ))}
+                </div>
+            </div>
+            <div className={styles.center}>
+                <button
+                type='submit'
                 disabled={status === 'saving'}
-                className="rounded bg-blue-600 px-5 py-2 text-white disabled:opacity-50"
+                className={styles.button}
             >
                 {status === 'saving' ? 'Saving…' : 'Save'}
             </button>
+            </div>
 
             {status === 'success' && (
-                <p className="text-green-600">Saved!</p>
+                <p className='text-green-600'>Saved!</p>
             )}
             {status === 'error' && (
-                <p className="text-red-600">
+                <p className='text-red-600'>
                 Validation failed or server error.
                 </p>
             )}
