@@ -10,7 +10,7 @@ type ConfigDraft = Omit<Config, 'products'> & {
     products: string[];
 };
 
-export default function ConfigForm() {
+export default function ConfigForm({ endpoint }: { endpoint: string }) {
     const [draft, setDraft] = useState<ConfigDraft>({
         address: {
             country: '',
@@ -63,7 +63,7 @@ export default function ConfigForm() {
 
         setStatus('saving');
 
-        const res = await fetch('/api/config', {
+        const res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(parsed.data),
