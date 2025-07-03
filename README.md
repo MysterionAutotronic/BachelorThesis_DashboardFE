@@ -1,4 +1,4 @@
-# BachelorThesis_TemplateFE
+# BachelorThesis_DashboardFE
 
 Run dev: `npx next dev`
 Build (Docker): `docker build -t nextjs-docker .`
