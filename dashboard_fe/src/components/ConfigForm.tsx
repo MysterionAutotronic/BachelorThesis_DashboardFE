@@ -11,7 +11,12 @@ type ConfigDraft = Omit<Config, 'products'> & {
     products: string[];
 };
 
-export default function ConfigForm({ endpoint }: { endpoint: string }) {
+interface ConfigFormProps {
+    endpoint: string,
+    user: string
+}
+
+export default function ConfigForm({ endpoint, user }: ConfigFormProps) {
     const [draft, setDraft] = useState<ConfigDraft>({
         address: {
             country: '',
@@ -66,7 +71,10 @@ export default function ConfigForm({ endpoint }: { endpoint: string }) {
 
         const res = await fetch(endpoint, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'user': user,
+            },
             body: JSON.stringify(parsed.data),
         });
 

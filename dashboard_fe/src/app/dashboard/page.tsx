@@ -14,7 +14,7 @@ export default async function DashboardPage() {
         <main>
             <h1>Tenant Configuration for <b>{session.user}</b></h1>
 
-            <ConfigForm endpoint={endpoint}/>
+            <ConfigForm endpoint={endpoint} user={session.user}/>
         </main>
     );
 }
