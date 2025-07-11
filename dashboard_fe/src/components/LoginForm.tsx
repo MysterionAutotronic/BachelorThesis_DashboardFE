@@ -18,21 +18,21 @@ export default function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-            name="username"
-            placeholder="username"
-            required
-            disabled={pending}
-            className="border p-2 w-full"
-        />
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        <button
-            type="submit"
-            disabled={pending}
-            className="bg-black text-white px-4 py-2 disabled:opacity-50"
-        >
-            {pending ? '…' : 'Sign in'}
-        </button>
+            <input
+                name="username"
+                placeholder="username"
+                required
+                disabled={pending}
+                className="border p-2 w-full"
+            />
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            <button
+                type="submit"
+                disabled={pending}
+                className="bg-black text-white px-4 py-2 disabled:opacity-50"
+            >
+                {pending ? '…' : 'Sign in'}
+            </button>
         </form>
     );
 }
