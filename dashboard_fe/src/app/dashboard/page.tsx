@@ -7,14 +7,11 @@ export default async function DashboardPage() {
     const session = await getSession();
     if (!session) redirect('/login');
 
-    if (!process.env.CONFIG_ENDPOINT) console.error('environment variable CONFIG_ENDPOINT not defined');
-    const endpoint = process.env.NEXT_PUBLIC_CONFIG_ENDPOINT!;
-
     return (
         <main>
             <h1>Tenant Configuration for <b>{session.user}</b></h1>
 
-            <ConfigForm endpoint={endpoint} user={session.user}/>
+            <ConfigForm user={session.user}/>
         </main>
     );
 }

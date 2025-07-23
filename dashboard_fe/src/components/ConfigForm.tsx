@@ -16,7 +16,7 @@ interface ConfigFormProps {
     user: string
 }
 
-export default function ConfigForm({ endpoint, user }: ConfigFormProps) {
+export default function ConfigForm({ user }: ConfigFormProps) {
     const [draft, setDraft] = useState<ConfigDraft>({
         address: {
             country: '',
@@ -69,7 +69,7 @@ export default function ConfigForm({ endpoint, user }: ConfigFormProps) {
 
         setStatus('saving');
 
-        const res = await fetch(endpoint, {
+        const res = await fetch('/api/config', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
