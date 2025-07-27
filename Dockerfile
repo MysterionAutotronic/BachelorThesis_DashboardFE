@@ -26,7 +26,7 @@ COPY dashboard_fe/. .
 
 # Build ARG for CONFIG_ENDPOINT
 ARG CONFIG_ENDPOINT
-ENV NEXT_PUBLIC_CONFIG_ENDPOINT=$CONFIG_ENDPOINT
+ENV CONFIG_ENDPOINT=$CONFIG_ENDPOINT
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
