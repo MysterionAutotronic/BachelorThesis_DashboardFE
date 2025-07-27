@@ -12,7 +12,6 @@ type ConfigDraft = Omit<Config, 'products'> & {
 };
 
 interface ConfigFormProps {
-    endpoint: string,
     user: string
 }
 
